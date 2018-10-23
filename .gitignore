@@ -1,5 +1,5 @@
 .idea
 settings.py
 db.sqlite3
-.BetterDay/__pycache__/
+.__pycache__
 .DS_Store
