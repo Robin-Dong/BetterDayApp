@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Stylish Portfolio - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/stylish-portfolio.min.css'%}" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <a class="menu-toggle rounded" href="#">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a class="js-scroll-trigger" href="#page-top">Less is More</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#page-top">Home</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#daily-quote">Quote</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#daily-pic">Picture</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#portfolio">English</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead d-flex" width=1440px; height=810px; top=-105.5px; left=0px; style="background-image: url({% static 'images/bg-masthead.jpg'%})" >
+      <div class="container text-center my-auto">
+        <h1 class="mb-1">Less is more</h1>
+        <h3 class="mb-5">
+          <em>Stay hungry, Stay foolish</em>
+        </h3>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#daily-quote">Find Out More</a>
+      </div>
+      <div class="overlay"></div>
+    </header>
+
+    <!-- Quote -->
+    <section class="content-section bg-light" id="daily-quote">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+              <h1 style="margin-bottom: 5rem"> Daily Inspiration</h1>
+            <h2 class="font-italic font-weight-light">{{ daily_quote.quote }}</h2>
+            <p class="lead mb-5" >{{ daily_quote.note }}</p>
+            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#daily-pic">Next</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- daily pic -->
+    <section class="callout" id="daily-pic" style="background-image:url('https://cn.bing.com/{{ daily_img.img_url }}')">
+
+    </section>
+
+
+    <!-- daily english -->
+    <section class="content-section" id="portfolio" style="padding-bottom: 3rem" >
+      <div class="container">
+        <div class="content-section-heading text-center">
+          <h2 class="mb-5">Daily English Expressions</h2>
+        </div>
+        <div class="row no-gutters">
+        {% for en_img in daily_en.pic_url %}
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="https://wx2.sinaimg.cn/large/{{en_img}}">
+              <img class="img-fluid" src="https://wx2.sinaimg.cn/large/{{en_img}}" alt="">
+            </a>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+          <p class="text-muted middle mb-0" id="contact">一句话</p>
+          <p class="text-muted middle mb-0" id="contact">一张图</p>
+          <p class="text-muted middle mb-0" id="contact">三句地道表达</p>
+          <p class="text-muted middle mb-0" id="contact">给崭新的每一天</p>
+          <p class="text-muted middle mb-0" id="contact"> Contact me:&nbsp donglichun1216@163.com</p>
+        <p class="text-muted middle mb-0">Copyright &copy; LessIsMore &nbsp  | &nbsp made with <i class="fa fa-heart text-color"></i></p>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'js/stylish-portfolio.min.js' %}"></script>
+
+  </body>
+
+</html>
