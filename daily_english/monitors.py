@@ -10,7 +10,7 @@ def get_daily_english():
         'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36",
         'X-Requested-With': 'XMLHttpRequest',
     }
-    url = 'https://m.weibo.cn/api/container/getIndex?containerid=1076033802004551&page=1'
+    url = 'https://m.weibo.cn/api/container/getIndex?containerid=1076033802004551&page=1&is_all[]=1'
     re = requests.get(url, headers=headers)
     items = re.json().get('data').get('cards')
     target_title = "#每日三句地道表达#"
@@ -23,8 +23,11 @@ def get_daily_english():
                 pic_list = [pic['pid'] for pic in page_item]
                 DailyEnglish.objects.get_or_create(pic_url=pic_list, created_time=created_time)
                 print(created_time + 'ok')
-        except:
+                break
+        except Exception as e:
+            print(e)
             continue
+
     print("daily_english don't update ", datetime.datetime.now())
 
 
@@ -36,7 +39,8 @@ def get_daily_pic():
         title = re.json()['images'][0]['title']
         DailyImg.objects.get_or_create(img_url=img, title=title)
         print('daily_pic done')
-    print("daily_pic don't update ", datetime.datetime.now())
+    else:
+        print("daily_pic don't update ", datetime.datetime.now())
 
 
 def get_daily_quote():
@@ -47,12 +51,13 @@ def get_daily_quote():
         note = re.json()['note']
         DailyQuote.objects.get_or_create(quote=content, note=note)
         print('daily_quote done')
-    print("daily_quote don't update",datetime.datetime.now())
+    else:
+        print("daily_quote don't update",datetime.datetime.now())
 
 
 def update_date():
-    get_daily_english()
-    get_daily_pic()
-    get_daily_quote()
+    print('here')
+    #get_daily_pic()
+    #get_daily_quote()
 
 
